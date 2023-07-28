@@ -1,8 +1,6 @@
 #  Terminal and HomeBrew
 * Grant Terminals full disk access
 * Change screen resolution
-* Update computer name
-*     sudo scutil --set LocalHostName mm
 * HomeBrew
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
