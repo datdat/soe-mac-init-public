@@ -30,7 +30,7 @@ cd -
     
 # Ansible
 ```
-brew install ansible
+brew install ansible firefox
 ```
 ```
 ansible-galaxy collection install community.general
