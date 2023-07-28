@@ -58,10 +58,10 @@ Reboot
 * Setup SYNC
 * Appstore app:
     * RDP
-* Setup Dropbox (me@nguyen.im)
+* Setup Dropbox (me [@] n........im)
 * Download greenlock keyfile from Google Drive and:
 *     mv ~/Downloads/greenlock.keyx ~/keys/.
-* Setup Profile Work profile
+* Setup Profile Work profile (work [@] n......im)
 *     /Applications/Firefox.app/Contents/MacOS/firefox -P "work" &
 * Visual Code
     * Auto Save
