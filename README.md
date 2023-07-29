@@ -64,6 +64,8 @@ Reboot
 * Setup Profile Work profile (work [@] n......im)
 *     /Applications/Firefox.app/Contents/MacOS/firefox -P "work" &
 * Visual Code
-    * Auto Save
+    * Sign-in with github (d-a-t-[d]at) - 
+    * Check if Auto Save is automatically sync
 * Sign out from iMessages
+* LockScreen, require password after 8 hours 
 
