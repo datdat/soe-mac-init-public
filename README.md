@@ -67,5 +67,6 @@ Reboot
     * Sign-in with github (d-a-t-[d]at) - 
     * Check if Auto Save is automatically sync
 * Sign out from iMessages
+* Disable handoff
 * LockScreen, require password after 8 hours 
 
