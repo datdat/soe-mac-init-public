@@ -2,22 +2,30 @@
 ## Git
 * Check for any uncommit changes
 ```bash
-for dir in */; do
-    # Check if it's a directory and has a .git folder
-    if [ -d "$dir" ] && [ -d "$dir/.git" ]; then
-        echo "Checking $dir..."
-        cd "$dir" || continue
-        
-        # Check if there are uncommitted changes
-        if ! git diff --quiet || ! git diff --cached --quiet; then
-            echo "  Uncommitted changes found in $dir"
-            git status -s  # Show short status of changes
-        else
-            echo "  No uncommitted changes in $dir"
-        fi
-        
-        cd .. # Return to parent directory
+cd ~/code
+#!/bin/bash
+
+# Find all directories with a .git folder
+find . -type d -name ".git" | while read -r git_dir; do
+    # Get the repository directory (parent of .git)
+    repo_dir=$(dirname "$git_dir")
+    echo "Checking repository: $repo_dir"
+    
+    # Change into the repository directory
+    cd "$repo_dir" || continue
+    
+    # Check for uncommitted changes
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+        echo "  - Has uncommitted changes"
     fi
+    
+    # Check for unpushed commits to origin
+    if git log origin/$(git rev-parse --abbrev-ref HEAD)..HEAD 2>/dev/null | grep -q '.'; then
+        echo "  - Has unpushed commits"
+    fi
+    
+    # Return to the original directory
+    cd - > /dev/null
 done
 ```
 
