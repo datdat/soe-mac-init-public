@@ -82,7 +82,7 @@ cd -
     
 # Ansible
 ```bash
-brew install ansible firefox
+brew install ansible
 ```
 ```bash
 ansible-galaxy collection install community.general
