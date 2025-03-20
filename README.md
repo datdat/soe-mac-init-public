@@ -75,6 +75,7 @@ done
 
 chmod -R 0600 $ssh_keys_out_dir/*
 cd - 
+ls -lah "$ssh_keys_out_dir"
 ```
 
 # Load the keys
