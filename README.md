@@ -101,7 +101,9 @@ Reboot
 ```bash
 ./run-playbook.sh macos-post.yml
 ```
-
+```bash
+./ssh-load-apple-keychain-key.sh
+```
 #  MANUAL
 * Setup Profile Me profile
 *     /Applications/Firefox.app/Contents/MacOS/firefox -P "me" &
