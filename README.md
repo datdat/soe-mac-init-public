@@ -1,21 +1,61 @@
+# Pre ReInstall tasks
+## Git
+* Check for any uncommit changes
+```bash
+for dir in */; do
+    # Check if it's a directory and has a .git folder
+    if [ -d "$dir" ] && [ -d "$dir/.git" ]; then
+        echo "Checking $dir..."
+        cd "$dir" || continue
+        
+        # Check if there are uncommitted changes
+        if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "  Uncommitted changes found in $dir"
+            git status -s  # Show short status of changes
+        else
+            echo "  No uncommitted changes in $dir"
+        fi
+        
+        cd .. # Return to parent directory
+    fi
+done
+```
+
+## Backup
+* Export RDP setting
+* FoxyProxy setting
+* tar gzip home directory
+```bash
+backupDate=$(date "+%Y-%m-%d")
+backupTarget="/Volumes/media/downloads/backup/mm/$backupDate"
+backupFilename="mm-home-dir.tgz"
+mkdir $backupTarget
+
+cd ~
+tar --exclude '.git/' --exclude '.venv/' --exclude 'Dropbox' --exclude './Library' --exclude './.cache' --exclude './.docker' --exclude './Music' --exclude './go' --exclude './Pictures' --exclude './.kube' --exclude './.Trash' --exclude './.npm' --exclude './.vscode' --exclude './noBackup' --exclude './.ollama' \
+--one-file-system -zcvf $backupFilename .
+
+mv $backupFilename $backupTarget/.
+```
+
 #  Terminal and HomeBrew
 * Grant Terminals full disk access
 * Change screen resolution
 * HomeBrew
-```
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-```
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/kong/.zprofile
-source /Users/kong/.zprofile
+```bash
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+source ~/.zprofile
 ```
 
 
 # Grab ssh keys
-```
+```bash
 open "smb://media@ebox/media"
 ```
-```
+```bash
 ssh_keys_out_dir=~/keys
 mkdir "$ssh_keys_out_dir"
 cd /Volumes/media/downloads/backup/ssh_keys
@@ -29,26 +69,26 @@ cd -
     ssh-add --apple-use-keychain ~/keys/*.key    
     
 # Ansible
-```
+```bash
 brew install ansible firefox
 ```
-```
+```bash
 ansible-galaxy collection install community.general
 ```
-```
+```bash
 mkdir -p ~/code/personal
 cd ~/code/personal
-git clone 'git@github.com:datdat/soe-mac.git'
+GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone 'git@github.com:datdat/soe-mac.git'
 cd soe-mac/ansible
 ```
-```
+```bash
 ./run-playbook.sh
 ```
-```
+```bash
 ./run-playbook.sh run-once.yml
 ```
 Reboot
-```
+```bash
 ./run-playbook.sh macos-post.yml
 ```
 
