@@ -85,9 +85,6 @@ cd -
 brew install ansible
 ```
 ```bash
-ansible-galaxy collection install community.general
-```
-```bash
 mkdir -p ~/code/personal
 cd ~/code/personal
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone 'git@github.com:datdat/soe-mac.git'
