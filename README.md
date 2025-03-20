@@ -66,9 +66,13 @@ open "smb://media@ebox/media"
 ```bash
 ssh_keys_out_dir=~/keys
 mkdir "$ssh_keys_out_dir"
-cd /Volumes/media/downloads/backup/ssh_keys
-echo 'PASSWORD HINT: My first cat name'
-for i in *.enc; do openssl enc -d -md md5 -aes-256-cbc -in "$i" -out "$ssh_keys_out_dir/${i//.enc}" ;done
+cd /Volumes/media/downloads/backup/keys
+echo 'PASSWORD HINT: My cat first name'
+read -s PASS
+for f in *.enc; do
+    openssl enc -d -md sha256 -aes-256-cbc -pbkdf2 -in "$f" -out "$ssh_keys_out_dir/${f%.enc}" -k "$PASS"
+done
+
 chmod -R 0600 $ssh_keys_out_dir/*
 cd - 
 ```
