@@ -54,17 +54,16 @@ cd soe-mac/ansible
 ```
 Reboot
 ```bash
-./run-playbook.sh macos-post.yml
+ssh-load-apple-keychain-key.sh
 ```
 ```bash
-./ssh-load-apple-keychain-key.sh
+./run-playbook.sh macos-post.yml
 ```
 #  MANUAL
 * Setup Profile Me profile
 *     /Applications/Firefox.app/Contents/MacOS/firefox -P "me" &
-* Setup SYNC
-* Appstore app:
-    * RDP
+* Setup Firefox SYNC
+* Restore RDP settings
 * Setup Dropbox (me [@] n........im)
 * Download greenlock keyfile from Google Drive and:
 *     mv ~/Downloads/greenlock.keyx ~/keys/.
@@ -76,4 +75,3 @@ Reboot
 * Sign out from iMessages
 * Disable handoff
 * LockScreen, require password after 8 hours 
-
