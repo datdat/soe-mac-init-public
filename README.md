@@ -1,6 +1,14 @@
 # Backup your existing enviroment
 [backup instruction here](backup.md)
 
+
+# Reset / Erase existing MacOS
+* Go to System Settings, General, Transfer or Reset
+
+## NOTE: Alternative option:
+Wait for the Mac to shut down completely, then press and hold the power button until the system volume and the Options button appear.
+This will download the OS
+
 #  Terminal and HomeBrew
 * Grant Terminals full disk access
 * Change screen resolution
@@ -12,6 +20,7 @@
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 source ~/.zprofile
 ```
+
 
 
 # Grab ssh keys
@@ -71,7 +80,7 @@ ssh-load-apple-keychain-key.sh
 *     /Applications/Firefox.app/Contents/MacOS/firefox -P "work" &
 * Visual Code
     * Sign-in with github (d-a-t-[d]at) - 
-    * Check if Auto Save is automatically sync
-* Sign out from iMessages
-* Disable handoff
+* If signed into Apple ID:
+    * Sign out from iMessages
+    * Disable handoff
 * LockScreen, require password after 8 hours 
